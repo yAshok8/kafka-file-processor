@@ -6,23 +6,28 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class FileProcessingService {
 
     public void processFile(final MultipartFile file) throws IOException {
-        // Create a BufferedReader to read the uploaded CSV file
+        final List<String> headers = new ArrayList<>();
+        final List<String> values = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
             String line;
+            int rowLine = 0;
             while ((line = reader.readLine()) != null) {
-                // Process each line here, e.g., split it into fields
                 String[] fields = line.split(",");
-                for (String field : fields) {
-                    // Process each field as needed
-                    System.out.print(field+" | ");
-                    // Replace this with your own processing logic
-                }
-                System.out.println();
+                if (rowLine == 0)
+                    headers.addAll(Arrays.asList(fields));
+                else
+                    values.addAll(Arrays.asList(fields));
+                rowLine++;
+                values.clear();
             }
         }
     }
