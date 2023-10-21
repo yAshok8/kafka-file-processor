@@ -1,13 +1,13 @@
-package in.kafkafileprocessor;
+package com.splitter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
-public class KafkaFileProcessorApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(KafkaFileProcessorApplication.class, args);
-	}
-
+@EnableAsync
+public class SplitterApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(SplitterApplication.class, args);
+    }
 }
