@@ -1,0 +1,58 @@
+[
+  {
+    "fieldName": "name",
+    "type": "String",
+    "minLen": "3",
+    "maxLen": "20",
+    "index": 0
+  },
+  {
+    "fieldName": "age",
+    "type": "Integer",
+    "minLen": "2",
+    "maxLen": "2",
+    "index": 1
+  },
+  {
+    "fieldName": "address",
+    "type": "String",
+    "minLen": "3",
+    "maxLen": "150",
+    "index": 2
+  },
+  {
+    "fieldName": "maths",
+    "type": "String",
+    "minLen": "3",
+    "maxLen": "20",
+    "index": 3
+  },
+  {
+    "fieldName": "english",
+    "type": "String",
+    "minLen": "3",
+    "maxLen": "20",
+    "index": 4
+  },
+  {
+    "fieldName": "science",
+    "type": "String",
+    "minLen": "3",
+    "maxLen": "20",
+    "index": 5
+  },
+  {
+    "fieldName": "history",
+    "type": "String",
+    "minLen": "3",
+    "maxLen": "20",
+    "index": 6
+  },
+  {
+    "fieldName": "geography",
+    "type": "String",
+    "minLen": "3",
+    "maxLen": "20",
+    "index": 7
+  }
+]
