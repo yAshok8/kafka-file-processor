@@ -1,5 +1,5 @@
 package com.splitter.model;
 
-enum Subject {
+public enum Subject {
     MATHS, ENGLISH, SCIENCE, HISTORY, GEOGRAPHY
 }
