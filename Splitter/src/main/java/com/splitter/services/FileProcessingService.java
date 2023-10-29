@@ -1,5 +1,6 @@
 package com.splitter.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.splitter.model.Student;
 import com.splitter.utils.StringUtility;
 import com.splitter.utils.StudentUtility;
@@ -25,6 +26,8 @@ public class FileProcessingService {
     @Autowired
     private KafkaProducerService producerService;
 
+    ObjectMapper objectMapper = new ObjectMapper();
+
     public void processFile(final MultipartFile file) throws IOException {
         LOGGER.info("Started processing the file content.");
         final List<String> headers = new ArrayList<>();
@@ -39,7 +42,7 @@ public class FileProcessingService {
                 } else {
                     values.addAll(Arrays.asList(fields));
                     Map<String, String> studentMap = StudentUtility.convertToMap(headers, values);
-                    producerService.sendMessage(StudentUtility.getStudentFromMap(studentMap).toString());
+                    producerService.sendMessage(objectMapper.writeValueAsString(StudentUtility.getStudentFromMap(studentMap)));
                 }
                 rowLine++;
                 values.clear();

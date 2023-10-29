@@ -1,5 +1,7 @@
 package com.consumer.service;
 
+import com.consumer.model.Student;
+import com.consumer.utils.StudentUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,11 +26,14 @@ public class FileWriterService {
 
     public void writeToFile(final String content) {
         try {
+            LOGGER.info("Writing data to the file.");
             File file = new File(filePath + "/" + fileName);
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter writer = new BufferedWriter(fileWriter);
-            writer.write(content); // Write the incoming data to the file
-            writer.newLine(); // Append new line
+            Student student = StudentUtility.getMeAStudent(content);
+            String fileLineContent = StudentUtility.getLine(student);
+            writer.write(fileLineContent);
+            writer.newLine();
             writer.close();
         } catch (IOException e) {
             LOGGER.error("Could not write to the file,", e);

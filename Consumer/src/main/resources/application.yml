@@ -3,7 +3,7 @@ server:
 system:
   file:
     path: D:/files-here
-    name: student_information
+    name: student_information.csv
 spring:
   kafka:
     consumer:
