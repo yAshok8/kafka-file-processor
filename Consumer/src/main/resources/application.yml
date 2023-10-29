@@ -1,5 +1,9 @@
 server:
   port: 8081
+system:
+  file:
+    path: D:/files-here
+    name: student_information
 spring:
   kafka:
     consumer:
