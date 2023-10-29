@@ -3,7 +3,9 @@ package com.consumer.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ConsumerService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerService.class);
@@ -12,5 +14,6 @@ public class ConsumerService {
     public void consume(String message) {
         // Process the received message
         LOGGER.info("Received message: {}", message);
+        //send the student information for adding to the file.
     }
 }
