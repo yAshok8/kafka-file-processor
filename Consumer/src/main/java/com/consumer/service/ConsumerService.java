@@ -16,8 +16,6 @@ public class ConsumerService {
 
     @KafkaListener(topics = "${spring.kafka.consumer.topic-name}")
     public void consume(String message) {
-        // Process the received message
-        LOGGER.info("Received message: {}", message);
         //send the student information for adding to the file.
         fileWriterService.writeToFile(message);
     }

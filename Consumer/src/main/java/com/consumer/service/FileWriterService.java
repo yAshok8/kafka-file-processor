@@ -26,7 +26,7 @@ public class FileWriterService {
 
     public void writeToFile(final String content) {
         try {
-            LOGGER.info("Writing data to the file.");
+            LOGGER.info("Writing data to the file. {}", content);
             File file = new File(filePath + "/" + fileName);
             FileWriter fileWriter = new FileWriter(file, true);
             BufferedWriter writer = new BufferedWriter(fileWriter);
