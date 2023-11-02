@@ -34,7 +34,7 @@ public class FileWriterService {
             String fileLineContent = StudentUtility.getLine(student);
             writer.write(fileLineContent);
             writer.newLine();
-            writer.close();
+            writer.close(); //This could be heavy operation. Search if this can be optimized further.
         } catch (IOException e) {
             LOGGER.error("Could not write to the file,", e);
         }
