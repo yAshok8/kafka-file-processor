@@ -1,5 +1,8 @@
 package com.splitter.configuration;
 
+import com.splitter.services.Producer;
+import com.splitter.services.ProducerAsync;
+import com.splitter.services.ProducerSync;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,4 +46,16 @@ public class KafkaConfig {
     public KafkaTemplate<String, String> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
+    @Value("${enable.async}")
+    private boolean enableAsync;
+    @Value("${spring.kafka.producer.topic-name}")
+    private String topicName;
+    @Bean
+    public Producer producer() {
+        if (enableAsync) {
+            return new ProducerAsync(topicName, kafkaTemplate());
+        }
+        return new ProducerSync(topicName, kafkaTemplate());
+    }
+
 }

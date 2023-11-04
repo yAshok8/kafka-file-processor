@@ -23,7 +23,7 @@ public class FileProcessingService {
     private static final Logger LOGGER = LoggerFactory.getLogger(FileProcessingService.class);
 
     @Autowired
-    private KafkaProducerService producerService;
+    private Producer producerService;
 
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -41,7 +41,7 @@ public class FileProcessingService {
                 } else {
                     values.addAll(Arrays.asList(fields));
                     Map<String, String> studentMap = StudentUtility.convertToMap(headers, values);
-                    producerService.sendMessageAsync(objectMapper.writeValueAsString(StudentUtility.getStudentFromMap(studentMap)));
+                    producerService.sendMessage(objectMapper.writeValueAsString(StudentUtility.getStudentFromMap(studentMap)));
                 }
                 rowLine++;
                 values.clear();
