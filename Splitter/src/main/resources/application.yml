@@ -3,7 +3,8 @@ server:
 spring:
   kafka:
     producer:
-      topic-name: file-processor-topic
+#      topic-name: file-processor-topic
+      topic-name: topic-1p-1r
       bootstrap-servers: localhost:9092
       linger-ms: 20
       batch-size: 32768

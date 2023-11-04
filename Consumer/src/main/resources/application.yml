@@ -8,6 +8,5 @@ spring:
   kafka:
     consumer:
       bootstrap-servers: localhost:9092
-      group-id: file-processor-consumer-1
-      topic-name: file-processor-topic
-      linger.ms: 20
+      group-id: grp-topic-1p-1r
+      topic-name: topic-1p-1r

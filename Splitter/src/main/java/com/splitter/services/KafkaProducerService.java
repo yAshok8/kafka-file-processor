@@ -20,7 +20,7 @@ public class KafkaProducerService {
     private KafkaTemplate<String, String> kafkaTemplate;
 
     @Async
-    public void sendMessage(String message) {
+    public void sendMessageAsync(String message) {
         LOGGER.info("Sending message to kafka {}", message);
         kafkaTemplate.send(topicName, message);
         System.out.println();

@@ -1,7 +1,6 @@
 package com.splitter.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.splitter.model.Student;
 import com.splitter.utils.StringUtility;
 import com.splitter.utils.StudentUtility;
 import org.slf4j.Logger;
@@ -42,7 +41,7 @@ public class FileProcessingService {
                 } else {
                     values.addAll(Arrays.asList(fields));
                     Map<String, String> studentMap = StudentUtility.convertToMap(headers, values);
-                    producerService.sendMessage(objectMapper.writeValueAsString(StudentUtility.getStudentFromMap(studentMap)));
+                    producerService.sendMessageAsync(objectMapper.writeValueAsString(StudentUtility.getStudentFromMap(studentMap)));
                 }
                 rowLine++;
                 values.clear();
